@@ -1,6 +1,6 @@
-GPU=0
+GPU=1
 CUDNN=0
-OPENCV=0
+OPENCV=1
 OPENMP=0
 DEBUG=0
 
@@ -19,14 +19,14 @@ ALIB=libdarknet.a
 EXEC=darknet
 OBJDIR=./obj/
 
-CC=gcc
+CC=gcc -g
 CPP=g++ -std=c++11
-NVCC=nvcc 
+NVCC=nvcc
 AR=ar
 ARFLAGS=rcs
 OPTS=-Ofast
-LDFLAGS= -lm -pthread 
-COMMON= -Iinclude/ -Isrc/
+LDFLAGS= -lm -pthread -L/opt/cuda/lib64
+COMMON= -Iinclude/ -Isrc/ -I/opt/cuda/include
 CFLAGS=-Wall -Wno-unused-result -Wno-unknown-pragmas -Wfatal-errors -fPIC
 
 ifeq ($(OPENMP), 1) 
